@@ -1,0 +1,16 @@
+.icon,
+.iconHover {
+  @apply absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 transition-opacity duration-300;
+}
+.icon {
+  @apply opacity-65;
+}
+.iconHover {
+  @apply opacity-0;
+}
+.iconButton:hover .icon {
+  @apply opacity-0;
+}
+.iconButton:hover .iconHover {
+  @apply opacity-100;
+}

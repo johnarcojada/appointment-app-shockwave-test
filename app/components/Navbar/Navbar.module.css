@@ -1,0 +1,4 @@
+.inputSearch:focus {
+  @apply bg-gray-100;
+  box-shadow: 0 0 0 2px #ff630b;
+}
