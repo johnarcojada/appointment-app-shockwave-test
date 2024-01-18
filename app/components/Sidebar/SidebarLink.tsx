@@ -17,7 +17,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 }) => {
   return (
     <div
-      className={`sidebar-link-wrapper relative ${styles.sidebarLinkWrapper}`}
+      className={`sidebar-link-wrapper relative overflow-hidden ${styles.sidebarLinkWrapper}`}
     >
       <Link
         href={link}

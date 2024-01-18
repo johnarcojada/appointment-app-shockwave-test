@@ -31,3 +31,5 @@ export { default as IconHomeOrange } from "assets/icons/icon_home-orange.svg";
 export { default as IconMessagesOrange } from "assets/icons/icon_messages-orange.svg";
 export { default as IconSettingsOrange } from "assets/icons/icon_settings-orange.svg";
 export { default as IconSubscriptionsOrange } from "assets/icons/icon_subscriptions-orange.svg";
+export { default as IconBellOrange } from "assets/icons/icon_bell-orange.svg";
+export { default as IconSignoutOrange } from "assets/icons/icon_signout-orange.svg";
