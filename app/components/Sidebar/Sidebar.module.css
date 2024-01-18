@@ -1,0 +1,28 @@
+.sidebar {
+  @apply w-240;
+}
+
+.sidebarLinkWrapper:before {
+  @apply bg-primary absolute top-0 right-0 bottom-0 w-4 opacity-0 transition-all duration-300;
+  content: "";
+}
+.sidebarLinkWrapper:hover:before {
+  @apply opacity-100;
+}
+.sidebarLinkIconHover {
+  @apply absolute top-0;
+}
+.sidebarLinkIcon {
+  @apply transition-opacity duration-300;
+  filter: invert(1);
+}
+.sidebarLinkIconHover {
+  @apply transition-opacity duration-300;
+  opacity: 0;
+}
+.sidebarLinkWrapper:hover .sidebarLinkIcon {
+  opacity: 0;
+}
+.sidebarLinkWrapper:hover .sidebarLinkIconHover {
+  opacity: 1;
+}
