@@ -73,6 +73,7 @@ const config: Config = {
         "128": "8rem",
         "160": "10rem",
         "240": "15rem",
+        "100vh-116": "calc(100vh - 7.25rem)",
       },
     },
   },
