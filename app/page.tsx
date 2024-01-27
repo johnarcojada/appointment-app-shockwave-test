@@ -9,7 +9,7 @@ export default function Home() {
       <Sidebar />
       <div className='flex flex-col flex-grow bg-white overflow-auto'>
         <Navbar />
-        <div className='main-area flex-grow'>
+        <div className='main-area flex-grow max-h-100vh-116'>
           <Appointments />
         </div>
       </div>

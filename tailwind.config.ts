@@ -19,6 +19,7 @@ const config: Config = {
           secondary: "FF9447",
           light: "#FFE0CE",
           dark: "#FF630B",
+          hover: "#e6590a",
           background: "#fff4ec",
         },
         gray: {

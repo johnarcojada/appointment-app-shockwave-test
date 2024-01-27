@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "styles/globals.css";
+import StoreProvider from "./StoreProvider";
 
 const urbanist = Urbanist({
   weight: ["300", "500", "600", "700"],
@@ -19,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={urbanist.className}>{children}</body>
+      <body className={urbanist.className}>
+        <StoreProvider>{children}</StoreProvider>
+      </body>
     </html>
   );
 }
