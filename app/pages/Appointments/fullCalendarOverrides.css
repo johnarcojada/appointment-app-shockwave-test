@@ -5,6 +5,7 @@
   --fc-button-border-color: #ff630b;
   --fc-button-hover-bg-color: #e6590a;
   --fc-button-hover-border-color: #e6590a;
+  --fc-highlight-color: #fff4ec;
 }
 .fc .fc-timegrid-axis-cushion,
 .fc .fc-timegrid-slot-label-cushion {
@@ -15,18 +16,22 @@
 .fc-theme-standard th {
   background-color: #ffffff;
 }
-.fc-scroller::-webkit-scrollbar {
+.fc-scroller::-webkit-scrollbar,
+.fc-event.fc-timegrid-event::-webkit-scrollbar {
   width: 8px;
 }
-.fc-scroller::-webkit-scrollbar-track {
+.fc-scroller::-webkit-scrollbar-track,
+.fc-event.fc-timegrid-event::-webkit-scrollbar-track {
   background: transparent;
 }
-.fc-scroller::-webkit-scrollbar-thumb {
+.fc-scroller::-webkit-scrollbar-thumb,
+.fc-event.fc-timegrid-event::-webkit-scrollbar-thumb {
   @apply bg-gray-500 rounded-sm rounded-full;
   border: 2px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
-.fc-scroller::-webkit-scrollbar-thumb:hover {
+.fc-scroller::-webkit-scrollbar-thumb:hover,
+.fc-event.fc-timegrid-event::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-600;
 }
 .fc-timegrid-body,
@@ -79,4 +84,13 @@
 .fc .fc-button-primary:not(:disabled).fc-button-active:focus,
 .fc .fc-button-primary:not(:disabled):active:focus {
   @apply shadow-none;
+}
+.fc-event.fc-timegrid-event {
+  @apply rounded-xl overflow-x-hidden overflow-y-auto;
+}
+.fc-event.fc-event-mirror {
+  @apply bg-orange-light border-orange-light;
+}
+.fc-v-event:not(.fc-event-selected) .fc-event-resizer-end {
+  @apply bottom-0;
 }

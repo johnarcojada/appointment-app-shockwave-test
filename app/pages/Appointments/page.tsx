@@ -1,5 +1,5 @@
 import React from "react";
-import ClientOverview from "@/pages/Appointments/ClientOverview";
+import ClientOverview from "@/pages/appointments/ClientOverview";
 import Calendar from "./Calendar";
 
 const Appointments = () => {

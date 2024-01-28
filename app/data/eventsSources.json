@@ -1,0 +1,74 @@
+[
+  {
+    "events": [
+      {
+        "title": "Meeting",
+        "start": "2024-01-28T08:00:00",
+        "end": "2024-01-28T09:30:00",
+        "allDay": false,
+        "client": {
+          "clientInfo": {
+            "name": "Chrissie Lee",
+            "email": "chrissielee@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+          },
+          "clinicDetails": {
+            "name": "Silvervale Tower",
+            "place": "Los Angeles",
+            "email": "branch01@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+          },
+          "petDetails": {
+            "name": "Brownie",
+            "type": "Dog",
+            "breed": "French Bulldog",
+            "sex": "Male",
+            "age": "10 months",
+            "birthday": "January 1, 2024"
+          }
+        }
+      }
+    ],
+    "backgroundColor": "#f4ecff",
+    "textColor": "#1C1C1E",
+    "borderColor": "#9747FF"
+  },
+  {
+    "events": [
+      {
+        "title": "Dog vaccination",
+        "start": "2024-01-28T10:00:00",
+        "end": "2024-01-28T11:30:00",
+        "allDay": false,
+        "client": {
+          "clientInfo": {
+            "name": "John Doe",
+            "email": "john.doe@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+          },
+          "clinicDetails": {
+            "name": "Silvervale Tower",
+            "place": "Los Angeles",
+            "email": "branch01@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+          },
+          "petDetails": {
+            "name": "Whity",
+            "type": "Cat",
+            "breed": "Persian",
+            "sex": "Male",
+            "age": "10 months",
+            "birthday": "January 1, 2024"
+          }
+        }
+      }
+    ],
+    "backgroundColor": "#fff4ec",
+    "textColor": "#1C1C1E",
+    "borderColor": "#FF630B"
+  }
+]

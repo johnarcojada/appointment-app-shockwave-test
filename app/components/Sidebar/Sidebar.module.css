@@ -1,12 +1,15 @@
 .sidebar {
   @apply w-240;
 }
-
+.sidebarLinkWrapper.active .sidebarLink {
+  @apply text-primary bg-gray-800;
+}
 .sidebarLinkWrapper:before {
   @apply bg-primary absolute top-0 right-0 bottom-0 w-4 opacity-0 transition-all duration-300;
   content: "";
 }
-.sidebarLinkWrapper:hover:before {
+.sidebarLinkWrapper:hover:before,
+.sidebarLinkWrapper.active:before {
   @apply opacity-100;
 }
 .sidebarLinkIconHover {
@@ -17,12 +20,14 @@
   filter: invert(1);
 }
 .sidebarLinkIconHover {
-  @apply transition-opacity duration-300;
+  @apply transition-opacity duration-300 opacity-0;
   opacity: 0;
 }
-.sidebarLinkWrapper:hover .sidebarLinkIcon {
-  opacity: 0;
+.sidebarLinkWrapper:hover .sidebarLinkIcon,
+.sidebarLinkWrapper.active .sidebarLinkIcon {
+  @apply opacity-0;
 }
-.sidebarLinkWrapper:hover .sidebarLinkIconHover {
-  opacity: 1;
+.sidebarLinkWrapper:hover .sidebarLinkIconHover,
+.sidebarLinkWrapper.active .sidebarLinkIconHover {
+  @apply opacity-100;
 }

@@ -1,25 +1,43 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import EventSources from "data/eventsSources.json";
 
-type ContactInformationState = {
+export type ContactInformationState = {
   name: string;
   email: string;
   phone: string;
   address: string;
 };
-type ClinicDetails = {
+export type ClinicDetails = {
   name: string;
   place: string;
   email: string;
   phone: string;
   address: string;
 };
-type PetDetails = {
+export type PetDetails = {
   name: string;
   type: string;
   breed: string | undefined | null;
   sex: string;
   age: string | undefined | null;
   birthday: string | undefined | null;
+};
+
+export type EventSourceType = {
+  events: {
+    title: string;
+    start: string;
+    end: string;
+    allDay: boolean;
+    client: {
+      clientInfo: ContactInformationState;
+      clinicDetails: ClinicDetails;
+      petDetails: PetDetails;
+    };
+  }[];
+  backgroundColor: string;
+  textColor: string;
+  borderColor: string;
 };
 
 const initialState = {

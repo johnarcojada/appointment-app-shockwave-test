@@ -16,7 +16,7 @@ const config: Config = {
       colors: {
         primary: "#FF630B",
         orange: {
-          secondary: "FF9447",
+          secondary: "#FF9447",
           light: "#FFE0CE",
           dark: "#FF630B",
           hover: "#e6590a",
@@ -46,6 +46,7 @@ const config: Config = {
         bold: "700",
       },
       spacing: {
+        "2": ".125rem",
         "4": ".25rem",
         "6": ".375rem",
         "8": ".5rem",
@@ -56,6 +57,7 @@ const config: Config = {
         "18": "1.125rem",
         "20": "1.25rem",
         "24": "1.5rem",
+        "28": "1.75rem",
         "32": "2rem",
         "36": "2.25rem",
         "40": "2.5rem",
@@ -75,6 +77,10 @@ const config: Config = {
         "160": "10rem",
         "240": "15rem",
         "100vh-116": "calc(100vh - 7.25rem)",
+      },
+      screens: {
+        "md-lg": "900px",
+        "lg-xl": "1180px",
       },
     },
   },
