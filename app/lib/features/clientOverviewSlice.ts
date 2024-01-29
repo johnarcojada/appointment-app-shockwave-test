@@ -6,10 +6,13 @@ export type ContactInformationState = {
   email: string;
   phone: string;
   address: string;
+  image: string;
 };
-export type ClinicDetails = {
+export type VetDetails = {
+  vetId: string;
+  image: string;
   name: string;
-  place: string;
+  building: string;
   email: string;
   phone: string;
   address: string;
@@ -17,52 +20,41 @@ export type ClinicDetails = {
 export type PetDetails = {
   name: string;
   type: string;
-  breed: string | undefined | null;
+  breed?: string | undefined | null;
   sex: string;
-  age: string | undefined | null;
-  birthday: string | undefined | null;
+  age?: string | undefined | null;
+  birthday?: string | undefined | null;
 };
 
-export type EventSourceType = {
-  events: {
-    title: string;
-    start: string;
-    end: string;
-    allDay: boolean;
-    client: {
-      clientInfo: ContactInformationState;
-      clinicDetails: ClinicDetails;
-      petDetails: PetDetails;
-    };
-  }[];
+export type EventType = {
+  id: string;
+  title: string;
+  start: string;
+  end: string;
+  allDay: boolean;
+  icon: string;
   backgroundColor: string;
   textColor: string;
   borderColor: string;
+  client: {
+    clientInfo: ContactInformationState;
+    vetDetails: VetDetails;
+    petDetails: PetDetails;
+  };
 };
+
+export type EventSourceType = [
+  {
+    events: EventType[];
+  }
+];
 
 const initialState = {
   isClientOverviewOpen: false,
-  clientInformation: {
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-  } as ContactInformationState,
-  clientDetails: {
-    name: "",
-    place: "",
-    email: "",
-    phone: "",
-    address: "",
-  } as ClinicDetails,
-  petDetails: {
-    name: "",
-    type: "",
-    breed: "" || undefined || null,
-    sex: "" || "Male" || "Female",
-    age: "" || undefined || null,
-    birthday: "" || undefined || null,
-  } as PetDetails,
+  eventSources: EventSources as EventSourceType,
+  selectedClientOverview: {} as {
+    events: EventType[];
+  },
 };
 
 export const clientOverview = createSlice({
@@ -72,8 +64,47 @@ export const clientOverview = createSlice({
     setIsClientOverviewOpen: (state, action: PayloadAction<boolean>) => {
       state.isClientOverviewOpen = action.payload;
     },
+    setSelectedClientOverview: (state, action: PayloadAction<string>) => {
+      const eventSource = state.eventSources.find(
+        (source) => source.events[0].id === action.payload
+      );
+      if (eventSource !== undefined) {
+        state.selectedClientOverview = eventSource;
+      }
+    },
+    addEvent: (state, action: PayloadAction<EventType>) => {
+      const randomizedId = Math.floor(Math.random() * 1000000000);
+      state.eventSources.push({
+        events: [
+          {
+            ...action.payload,
+            id: randomizedId.toString(),
+          },
+        ],
+      });
+    },
+    updateEvent: (state, action: PayloadAction<EventType>) => {
+      state.eventSources = state.eventSources.map((eventSource) => {
+        if (eventSource.events[0].id === action.payload.id) {
+          return { events: [action.payload] };
+        }
+        return eventSource;
+      });
+    },
+    removeEvent: (state, action: PayloadAction<string>) => {
+      const filteredSources = state.eventSources.filter(
+        (source) => (source.events as EventType[])[0].id !== action.payload
+      );
+      state.eventSources = filteredSources;
+    },
   },
 });
 
-export const { setIsClientOverviewOpen } = clientOverview.actions;
+export const {
+  setIsClientOverviewOpen,
+  setSelectedClientOverview,
+  addEvent,
+  removeEvent,
+  updateEvent,
+} = clientOverview.actions;
 export default clientOverview.reducer;

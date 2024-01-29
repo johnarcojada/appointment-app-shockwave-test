@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { AddressImage, ClientProfile, PetImage } from "@/assets";
+import { PetImage } from "@/assets";
 import {
   IconAge,
   IconBreed,
@@ -12,7 +12,9 @@ import {
   IconPinLocation,
 } from "@/assets/icons";
 import { motion } from "framer-motion";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { removeEvent } from "@/lib/features/clientOverviewSlice";
+import { useRouter } from "next/navigation";
 
 const clientOverviewAnim = {
   initial: { x: 400 },
@@ -27,10 +29,20 @@ const clientOverviewAnim = {
 };
 
 const ClientOverview = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const useSelector = useAppSelector;
-  const isClientOverviewOpen = useSelector(
-    (state) => state.clientOverviewReducer.isClientOverviewOpen
+  const { isClientOverviewOpen, selectedClientOverview } = useSelector(
+    (state) => state.clientOverviewReducer
   );
+  const event = selectedClientOverview.events?.[0];
+  const client = event?.client;
+  const handleOnCancelClick = () => {
+    dispatch(removeEvent(event.id));
+  };
+  const handleOnReschedClick = () => {
+    router.push(`appointments/form?eventId=${event.id}`);
+  };
   return (
     <motion.div
       className='client-overview-container h-full overflow-auto border-l border-l-gray-300 absolute left-full custom-scrollbar'
@@ -42,14 +54,14 @@ const ClientOverview = () => {
         {/* Client Name */}
         <div className='px-40 py-20 flex justify-between gap-24 border-b border-b-gray-300'>
           <div className='flex gap-24 items-center'>
-            <Image
-              src={ClientProfile}
+            <img
+              src={client?.clientInfo.image}
               alt='Client Profile'
-              className='h-80 w-80 rounded-full'
+              className='h-80 w-80 rounded-full border border-solid border-gray-300'
             />
             <div>
               <span className='client-name font-bold inline-block text-2xl text-gray-900'>
-                Chrissie Lee
+                {client?.clientInfo.name}
               </span>
               <span className='text-gray-400 text-16 block'>Client</span>
             </div>
@@ -69,13 +81,13 @@ const ClientOverview = () => {
               />
               <span className='text-gray-400'>Email</span>
             </span>
-            <span className='col-span-2'>chrissielee@gmail.com</span>
+            <span className='col-span-2'>{client?.clientInfo.email}</span>
 
             <span className='flex items-center gap-8'>
               <Image src={IconPhone} alt='Icon Mail' className='opacity-40' />
               <span className='text-gray-400'>Phone</span>
             </span>
-            <span className='col-span-2'>+01 234 567 8910</span>
+            <span className='col-span-2'>{client?.clientInfo.phone}</span>
 
             <span className='flex items-center gap-8'>
               <Image
@@ -85,10 +97,7 @@ const ClientOverview = () => {
               />
               <span className='text-gray-400'>Address</span>
             </span>
-            <span className='col-span-2'>
-              1st Avenue, Golden Street,Springville Village, San Diego,
-              California
-            </span>
+            <span className='col-span-2'>{client?.clientInfo.address}</span>
           </div>
         </div>
         {/* Clinic Details */}
@@ -97,16 +106,18 @@ const ClientOverview = () => {
             Clinic Details
           </span>
           <div className='flex gap-24 items-center mb-20'>
-            <Image
-              src={AddressImage}
+            <img
+              src={client?.vetDetails.image}
               alt='Address Image'
-              className='h-52 w-52 rounded-full'
+              className='h-52 w-52 rounded-full border border-solid border-gray-300'
             />
             <div>
               <span className='client-name font-bold inline-block text-gray-1000'>
-                Silvervale Towers
+                {client?.vetDetails.name}
               </span>
-              <span className='text-gray-400 text-16 block'>Los Angeles</span>
+              <span className='text-gray-400 text-16 block'>
+                {client?.vetDetails.building}
+              </span>
             </div>
           </div>
           <div className='grid grid-rows-2 grid-cols-3 gap-20 items-start'>
@@ -118,13 +129,13 @@ const ClientOverview = () => {
               />
               <span className='text-gray-400'>Email</span>
             </span>
-            <span className='col-span-2'>branch1@gmail.com</span>
+            <span className='col-span-2'>{client?.vetDetails.email}</span>
 
             <span className='flex items-center gap-8'>
               <Image src={IconPhone} alt='Icon Mail' className='opacity-40' />
               <span className='text-gray-400'>Phone</span>
             </span>
-            <span className='col-span-2'>+01 234 567 8910</span>
+            <span className='col-span-2'>{client?.vetDetails.phone}</span>
 
             <span className='flex items-center gap-8'>
               <Image
@@ -134,13 +145,9 @@ const ClientOverview = () => {
               />
               <span className='text-gray-400'>Address</span>
             </span>
-            <span className='col-span-2'>
-              4th Floor, RM 402, Blk 2, 13 Johnson Street, Silvervale Towers,
-              Los Angeles, California
-            </span>
+            <span className='col-span-2'>{client?.vetDetails.address}</span>
           </div>
         </div>
-
         {/* Pet Details */}
         <div className='px-40 py-20 border-b border-b-gray-300'>
           <span className='uppercase text-sm font-bold text-gray-400 mb-20 block'>
@@ -150,13 +157,15 @@ const ClientOverview = () => {
             <Image
               src={PetImage}
               alt='Pet Image'
-              className='h-52 w-52 rounded-full'
+              className='h-52 w-52 rounded-full border border-solid border-gray-300'
             />
             <div>
               <span className='client-name font-bold inline-block text-gray-1000'>
-                Brownie
+                {client?.petDetails.name}
               </span>
-              <span className='text-gray-400 text-16 block'>Dog</span>
+              <span className='text-gray-400 text-16 block'>
+                {client?.petDetails.type}
+              </span>
             </div>
           </div>
           <div className='grid grid-rows-2 grid-cols-3 gap-20 items-start'>
@@ -170,7 +179,9 @@ const ClientOverview = () => {
               </span>
               <span className='text-gray-400'>Breed</span>
             </span>
-            <span className='col-span-2'>French Bulldog</span>
+            <span className='col-span-2'>
+              {client?.petDetails.breed}French Bulldog
+            </span>
 
             <span className='flex items-center gap-8'>
               <span className='flex justify-center w-20'>
@@ -182,7 +193,7 @@ const ClientOverview = () => {
               </span>
               <span className='text-gray-400'>Sex</span>
             </span>
-            <span className='col-span-2'>Male</span>
+            <span className='col-span-2'>{client?.petDetails.sex}</span>
 
             <span className='flex items-center gap-8'>
               <span className='flex justify-center w-20'>
@@ -190,7 +201,7 @@ const ClientOverview = () => {
               </span>
               <span className='text-gray-400'>Age</span>
             </span>
-            <span className='col-span-2'>10 months</span>
+            <span className='col-span-2'>{client?.petDetails.age}</span>
 
             <span className='flex items-center gap-8'>
               <span className='flex justify-center w-20'>
@@ -202,8 +213,22 @@ const ClientOverview = () => {
               </span>
               <span className='text-gray-400'>Birthday</span>
             </span>
-            <span className='col-span-2'>January 12, 2023</span>
+            <span className='col-span-2'>{client?.petDetails.birthday}</span>
           </div>
+        </div>
+        <div className='px-40 py-20 border-b border-b-gray-300'>
+          <button
+            className='w-full bg-primary hover:bg-orange-hover py-12 px-24 text-white rounded-xl mb-20 transition duration-300'
+            onClick={handleOnReschedClick}
+          >
+            Reschedule Appointment
+          </button>
+          <button
+            className='w-full bg-white border border-solid border-gray-300 hover:border-primary hover:bg-primary py-12 px-24 text-gray-400 hover:text-white rounded-xl transition duration-300'
+            onClick={handleOnCancelClick}
+          >
+            Cancel Appointment
+          </button>
         </div>
       </div>
     </motion.div>

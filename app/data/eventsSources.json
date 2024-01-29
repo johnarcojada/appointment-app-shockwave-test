@@ -2,23 +2,31 @@
   {
     "events": [
       {
+        "id": "0",
         "title": "Meeting",
         "start": "2024-01-28T08:00:00",
         "end": "2024-01-28T09:30:00",
         "allDay": false,
+        "icon": "calendar",
+        "backgroundColor": "#f4ecff",
+        "textColor": "#1C1C1E",
+        "borderColor": "#9747FF",
         "client": {
           "clientInfo": {
             "name": "Chrissie Lee",
             "email": "chrissielee@gmail.com",
             "phone": "+01 234 567 8910",
-            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California",
+            "image": "https://images.generated.photos/oLuZD6rnyBvZBjaoKGeDSfLfnQaqGpO9DZPUxHovKFI/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTkwMjk3LmpwZw.jpg"
           },
-          "clinicDetails": {
-            "name": "Silvervale Tower",
-            "place": "Los Angeles",
-            "email": "branch01@gmail.com",
-            "phone": "+01 234 567 8910",
-            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+          "vetDetails": {
+            "vetId": "vet_0001",
+            "image": "https://images.generated.photos/LiVY287i-Vcha5U6TggW-Icc5kojFW4gHsrnKPzNfSE/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy8wNDg3/OTUyLmpwZw.jpg",
+            "name": "Anika Perry",
+            "address": "4517 Washington Avenue, Manchester, Kentucky 39495",
+            "building": "Green Bow Vett",
+            "phone": "+63 0123 123",
+            "email": "anika.perry@email.com"
           },
           "petDetails": {
             "name": "Brownie",
@@ -30,45 +38,170 @@
           }
         }
       }
-    ],
-    "backgroundColor": "#f4ecff",
-    "textColor": "#1C1C1E",
-    "borderColor": "#9747FF"
+    ]
   },
   {
     "events": [
       {
-        "title": "Dog vaccination",
-        "start": "2024-01-28T10:00:00",
-        "end": "2024-01-28T11:30:00",
+        "id": "1",
+        "title": "Cat vaccination",
+        "start": "2024-01-29T10:00:00",
+        "end": "2024-01-29T11:30:00",
         "allDay": false,
+        "icon": "vaccination",
+        "backgroundColor": "#fff4ec",
+        "textColor": "#1C1C1E",
+        "borderColor": "#FF630B",
         "client": {
           "clientInfo": {
             "name": "John Doe",
             "email": "john.doe@gmail.com",
             "phone": "+01 234 567 8910",
-            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California",
+            "image": "https://images.generated.photos/HqkzOJLcxXdh_a3PPWP-gdTEukEWfPQfXEv2vOkSVro/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzE0OTQ3LmpwZw.jpg"
           },
-          "clinicDetails": {
-            "name": "Silvervale Tower",
-            "place": "Los Angeles",
-            "email": "branch01@gmail.com",
-            "phone": "+01 234 567 8910",
-            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California"
+          "vetDetails": {
+            "vetId": "vet_0002",
+            "image": "https://images.generated.photos/yZ0PlSdQ7eEK3cYQsiiR3NHjl4cPFti1RFnXFVJMap0/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy8wNTQ2/ODA0LmpwZw.jpg",
+            "name": "Danica Jane",
+            "address": "4517 Washington Avenue, Manchester, Kentucky 39495",
+            "building": "Green Bow Vett",
+            "phone": "+63 0123 123",
+            "email": "danica.jane@email.com"
           },
           "petDetails": {
             "name": "Whity",
             "type": "Cat",
             "breed": "Persian",
+            "sex": "Female",
+            "age": "10 months",
+            "birthday": "January 1, 2024"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "events": [
+      {
+        "id": "2",
+        "title": "Pet Check-up",
+        "start": "2024-01-30T15:00:00",
+        "end": "2024-01-30T16:00:00",
+        "allDay": false,
+        "icon": "message",
+        "backgroundColor": "#fff4ec",
+        "textColor": "#1C1C1E",
+        "borderColor": "#FF630B",
+        "client": {
+          "clientInfo": {
+            "name": "Jane Smith",
+            "email": "jane.smith@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California",
+            "image": "https://images.generated.photos/PmY6dQEbsXmnU0L9o4MFCJYsnvm0QnUKQRZn_4tU86k/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzEyODg1LmpwZw.jpg"
+          },
+          "vetDetails": {
+            "vetId": "vet_0003",
+            "image": "https://images.generated.photos/WeKxEMRObQ4A2H8WmcVtaNNenRakIEbbU0sgiKM3CV4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy8wNTQ1/MDgzLmpwZw.jpg",
+            "name": "John Fins",
+            "address": "4517 Washington Avenue, Manchester, Kentucky 39495",
+            "building": "Green Bow Vett",
+            "phone": "+63 0123 123",
+            "email": "john.fins@email.com"
+          },
+          "petDetails": {
+            "name": "Runner",
+            "type": "Dog",
+            "breed": "Golden Retriver",
             "sex": "Male",
             "age": "10 months",
             "birthday": "January 1, 2024"
           }
         }
       }
-    ],
-    "backgroundColor": "#fff4ec",
-    "textColor": "#1C1C1E",
-    "borderColor": "#FF630B"
+    ]
+  },
+  {
+    "events": [
+      {
+        "id": "3",
+        "title": "Follow-up Check-up",
+        "start": "2024-01-31T13:00:00",
+        "end": "2024-01-31T14:00:00",
+        "allDay": false,
+        "icon": "message",
+        "backgroundColor": "#fff4ec",
+        "textColor": "#1C1C1E",
+        "borderColor": "#FF630B",
+        "client": {
+          "clientInfo": {
+            "name": "Edward Newgate",
+            "email": "edward.newgate@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California",
+            "image": "https://images.generated.photos/KTMaWehStk07v2WiO-FBQPharWw8SY1llnlAWpOqclU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjM2Njc3LmpwZw.jpg"
+          },
+          "vetDetails": {
+            "vetId": "vet_0004",
+            "image": "https://images.generated.photos/SjzHkpC07ETFx7gWUqsOPKUxHAPyMZ9RJ5VcflC_7QE/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy8wNTQw/MTQ5LmpwZw.jpg",
+            "name": "John Doe",
+            "address": "4517 Washington Avenue, Manchester, Kentucky 39495",
+            "building": "Green Bow Vett",
+            "phone": "+63 0123 123",
+            "email": "john.doe@email.com"
+          },
+          "petDetails": {
+            "name": "Marco",
+            "type": "Bird",
+            "breed": "Pheonix",
+            "sex": "Male",
+            "age": "10 months",
+            "birthday": "January 1, 2023"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "events": [
+      {
+        "id": "4",
+        "title": "Cat de-worming",
+        "start": "2024-02-01T17:00:00",
+        "end": "2024-02-01T18:00:00",
+        "allDay": false,
+        "icon": "vaccination",
+        "backgroundColor": "#fff4ec",
+        "textColor": "#1C1C1E",
+        "borderColor": "#FF630B",
+        "client": {
+          "clientInfo": {
+            "name": "Marshall Teach",
+            "email": "marshall.teach@gmail.com",
+            "phone": "+01 234 567 8910",
+            "address": "1st Avenue, Golden Street, Springville Village, San Diego, California",
+            "image": "https://images.generated.photos/SjJYRifoYe8W04KcE4QztSBFGAWBF75gXTCILfDtMGg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDQyNzY3LmpwZw.jpg"
+          },
+          "vetDetails": {
+            "vetId": "vet_0004",
+            "image": "https://images.generated.photos/SjzHkpC07ETFx7gWUqsOPKUxHAPyMZ9RJ5VcflC_7QE/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy8wNTQw/MTQ5LmpwZw.jpg",
+            "name": "John Doe",
+            "address": "4517 Washington Avenue, Manchester, Kentucky 39495",
+            "building": "Green Bow Vett",
+            "phone": "+63 0123 123",
+            "email": "john.doe@email.com"
+          },
+          "petDetails": {
+            "name": "Devon",
+            "type": "Dog",
+            "breed": "Shiba Inu",
+            "sex": "Female",
+            "age": "10 months",
+            "birthday": "January 1, 2023"
+          }
+        }
+      }
+    ]
   }
 ]

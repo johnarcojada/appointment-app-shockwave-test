@@ -5,21 +5,19 @@ import { useAppSelector } from "@/lib/hooks";
 import FullCalendar from "@fullcalendar/react";
 import FullCalendarRef from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin, {
-  Draggable,
-  DropArg,
-} from "@fullcalendar/interaction";
+import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import "./fullCalendarOverrides.css";
 // import EventBox from "./EventBox";
 import { EventContentArg } from "@fullcalendar/core/index.js";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaRegCalendarAlt } from "react-icons/fa";
 import { PiChatsCircleBold } from "react-icons/pi";
+import { LuSyringe } from "react-icons/lu";
 import {
   EventSourceType,
   setIsClientOverviewOpen,
+  setSelectedClientOverview,
 } from "@/lib/features/clientOverviewSlice";
-import AppointmentModal from "./AppointmentModal";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/lib/store";
 import { useRouter } from "next/navigation";
@@ -39,7 +37,6 @@ const EventBox = (eventInfo: EventContentArg) => {
   const event: EventSourceType = eventInfo.event
     .extendedProps as EventSourceType;
   const client = event.client ? event.client : "";
-  console.log({ client });
   return (
     <>
       {event && event.client ? (
@@ -53,7 +50,15 @@ const EventBox = (eventInfo: EventContentArg) => {
                   color: eventInfo.borderColor,
                 }}
               >
-                <PiChatsCircleBold />
+                {event.icon === "message" ? (
+                  <PiChatsCircleBold />
+                ) : event.icon === "vaccination" ? (
+                  <LuSyringe />
+                ) : event.icon === "calendar" ? (
+                  <FaRegCalendarAlt />
+                ) : (
+                  <FaRegCalendarAlt />
+                )}
               </div>
             </div>
             <div>
@@ -85,9 +90,9 @@ const Calendar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const useSelector = useAppSelector;
   const router = useRouter();
-  const { isClientOverviewOpen, eventSources } = useSelector(
-    (state) => state.clientOverviewReducer
-  );
+  const { isClientOverviewOpen, eventSources, selectedClientOverview } =
+    useSelector((state) => state.clientOverviewReducer);
+  const selectedClientId = selectedClientOverview.events?.[0].id;
   const calendarRef = useRef<FullCalendarRef | null>(null);
   // Generate additional custom elements
   useEffect(() => {
@@ -128,7 +133,6 @@ const Calendar = () => {
 
   return (
     <>
-      {/* <AppointmentModal /> */}
       <motion.div
         className='calendar-container w-full h-full overflow-auto custom-scrollbar'
         variants={calendarAnim}
@@ -139,6 +143,7 @@ const Calendar = () => {
           ref={calendarRef}
           plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
           initialView='timeGridDay'
+          initialDate='2024-01-28'
           headerToolbar={{
             left: "title prev next today",
             center: "timeGridDay,dayGridMonth",
@@ -178,8 +183,13 @@ const Calendar = () => {
               selectMirror: true,
             },
           }}
-          eventClick={() => {
-            dispatch(setIsClientOverviewOpen(!isClientOverviewOpen));
+          eventClick={(info) => {
+            const eventObj = info.event;
+            const { id } = eventObj;
+            if (id === selectedClientId || !selectedClientId) {
+              dispatch(setIsClientOverviewOpen(!isClientOverviewOpen));
+            }
+            dispatch(setSelectedClientOverview(id));
           }}
           // dateClick={{}}
           // drop={{}}

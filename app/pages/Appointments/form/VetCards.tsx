@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { IconMessages, IconPhone, IconPinLocation } from "@/assets/icons";
+import { FaCheck } from "react-icons/fa6";
+import styles from "./Form.module.css";
 
 type VetTypes = {
   name: string;
@@ -9,6 +11,8 @@ type VetTypes = {
   contactNumber: string;
   image: string;
   email: string;
+  isSelected: boolean;
+  onSelect: () => void;
 };
 
 const VetCards: React.FC<VetTypes> = ({
@@ -18,10 +22,23 @@ const VetCards: React.FC<VetTypes> = ({
   contactNumber,
   image,
   email,
+  isSelected = false,
+  onSelect,
 }) => {
   return (
-    <div className='rounded-lg border border-solid border-gray-300 p-20 relative pointer overflow-hidden'>
-      <div className='checbox absolute w-16 h-16 border border-solid border-gray-300 rounded-full bg-white right-8 top-8 cursor-pointer'></div>
+    <div
+      className={`${
+        styles.vetCard
+      } rounded-lg border bg-white border-solid border-gray-300 p-20 relative pointer overflow-hidden transition-all duration-300 hover:border-primary transform hover:scale-[1.025] ${
+        isSelected ? styles.selected : ""
+      }`}
+      onClick={onSelect}
+    >
+      <div
+        className={`${styles.checkbox} absolute w-16 h-16 border border-solid border-gray-300 rounded-full bg-white right-8 top-8 cursor-pointer transition duration-300 text-white text-xs`}
+      >
+        <FaCheck />
+      </div>
       <div className='flex gap-24 items-center mb-20'>
         <img
           src={image}
