@@ -92,9 +92,6 @@ export const clientOverview = createSlice({
       }) as EventSourceType;
     },
     removeEvent: (state, action: PayloadAction<string>) => {
-      // state.eventSources = state.eventSources.map((source) => ({
-      //   events: source.events.filter((event) => event.id !== action.payload),
-      // })) as EventSourceType;
       state.eventSources = state.eventSources.filter((source) => {
         return source.events[0].id !== action.payload;
       }) as EventSourceType;
