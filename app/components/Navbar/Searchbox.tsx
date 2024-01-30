@@ -48,7 +48,6 @@ const Searchbox = () => {
   useEffect(() => {
     const handleClickOutside = (evt: MouseEvent) => {
       if (!searchBoxRef.current?.contains(evt.target as Node)) {
-        console.log("asdasdas");
         setIsShowSuggestion(false);
         setIsFocused(false);
       }
