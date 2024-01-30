@@ -43,7 +43,7 @@ const Links = [
   },
   {
     name: "appointments",
-    link: "#",
+    link: "/pages/appointments",
     label: "Appointments",
     icon: IconAppointment,
     iconHover: IconAppointmentOrange,

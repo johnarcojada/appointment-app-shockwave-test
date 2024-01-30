@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Searchbox from "./Searchbox";
 import IconButton from "../IconButton";

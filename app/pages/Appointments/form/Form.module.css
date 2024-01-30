@@ -1,0 +1,13 @@
+.vetCard:hover .checkbox {
+  @apply border-primary;
+}
+.vetCard.selected {
+  @apply border-primary;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+.vetCard.selected .checkbox {
+  @apply bg-primary border-primary flex items-center justify-center;
+}
+.vetCard:focus-within .checkbox {
+  @apply border-primary;
+}
