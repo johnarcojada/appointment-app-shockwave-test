@@ -34,7 +34,7 @@ type ToastTypes = {
   action?: `${ToastAction}`;
   position?: `${ToastPosition}`;
   show?: boolean;
-  onClose: (value: boolean) => void;
+  onClose: (value: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const toastAnim = {

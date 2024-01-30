@@ -116,7 +116,7 @@ const Form = () => {
   };
   const handleOnFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    if (Object.keys(formData.client.vetDetails).length === 0) {
+    if (formData.client.vetDetails.vetId === "") {
       setIsShowToast(true);
       return;
     }
