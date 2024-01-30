@@ -8,3 +8,6 @@
 .vetCard.selected .checkbox {
   @apply bg-primary border-primary flex items-center justify-center;
 }
+.vetCard:focus-within .checkbox {
+  @apply border-primary;
+}

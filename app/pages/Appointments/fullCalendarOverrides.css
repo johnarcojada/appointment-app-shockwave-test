@@ -26,7 +26,7 @@
 }
 .fc-scroller::-webkit-scrollbar-thumb,
 .fc-event.fc-timegrid-event::-webkit-scrollbar-thumb {
-  @apply bg-gray-500 rounded-sm rounded-full;
+  @apply bg-gray-500 rounded-full;
   border: 2px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
@@ -42,18 +42,25 @@
   width: 100% !important;
 }
 .fc .fc-toolbar.fc-header-toolbar {
-  @apply mb-0;
+  @apply mb-0 flex-col md-lg-1000:flex-row gap-16;
+}
+.fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk:first-child {
+  @apply grid gap-8;
 }
 .fc-header-toolbar.fc-toolbar {
   @apply py-20 px-40;
 }
 .fc .fc-toolbar-title {
-  @apply text-2xl font-semibold inline-block top-4 relative;
+  @apply text-2xl font-semibold block top-4 md-lg-1000:mr-8 relative row-start-2 col-span-5 md-lg-1000:col-span-1 text-center md-lg-1000:text-start mb-8 md-lg-1000:mb-0;
   margin-left: 0 !important;
+}
+.fc-header-toolbar .fc-toolbar-chunk .fc-button.fc-prev-button {
+  @apply justify-self-end md-lg-1000:justify-self-start;
 }
 .fc-header-toolbar .fc-toolbar-chunk .fc-button.fc-prev-button,
 .fc-header-toolbar .fc-toolbar-chunk .fc-button.fc-next-button {
-  @apply bg-gray-100 border-0 rounded-full h-36 w-36 text-gray-800 text-xs hover:bg-orange-background hover:text-primary transition-all duration-300 focus:shadow-none;
+  @apply bg-gray-100 border-0 rounded-full h-36 w-36 text-gray-800 text-xs hover:bg-orange-background hover:text-primary transition-all duration-300 focus:shadow-none row-start-3 md-lg-1000:row-start-2;
+  margin-left: 0 !important;
 }
 .fc .fc-newAppointmentBtn-button {
   @apply transition-all duration-300 focus:shadow-none rounded-2xl px-20 py-12 active:shadow-none;
@@ -62,10 +69,10 @@
   @apply h-full;
 }
 .fc-header-subtitle {
-  @apply block text-gray-400 mb-12;
+  @apply block text-gray-400 mb-4 col-span-4 row-start-1 text-center md-lg-1000:text-start;
 }
 .fc-header-todayLabel {
-  @apply block text-gray-400 mt-12;
+  @apply block text-gray-400 mt-12 col-span-4 text-center md-lg-1000:text-start row-start-4 md-lg-1000:row-start-3;
   margin-left: 0 !important;
 }
 .fc .fc-button.fc-today-button,
@@ -76,7 +83,8 @@
 .fc .fc-button.fc-today-button,
 .fc .fc-button.fc-timeGridDay-button,
 .fc .fc-button.fc-dayGridMonth-button {
-  @apply bg-gray-100 text-gray-800 border-0 rounded-xl capitalize disabled:bg-gray-300 disabled:text-gray-500 transition-all duration-300;
+  @apply bg-gray-100 text-gray-800 border-0 rounded-xl capitalize disabled:bg-gray-300 disabled:text-gray-500 transition-all duration-300 row-start-3 col-span-2 col-start-2 md-lg-1000:row-start-2 md-lg-1000:col-span-1;
+  margin-left: 0 !important;
 }
 .fc .fc-button.fc-timeGridDay-button:not(.fc-button-active),
 .fc .fc-button.fc-dayGridMonth-button:not(.fc-button-active) {

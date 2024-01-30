@@ -62,6 +62,8 @@ const Form = () => {
           name: "",
           type: "",
           breed: "",
+          age: "10 months",
+          birthday: "January 1, 2023",
           sex: "" || "male" || "female",
         },
       },
@@ -119,9 +121,11 @@ const Form = () => {
       return;
     }
     if (eventId !== null) {
-      return dispatch(updateEvent(formData));
+      dispatch(updateEvent(formData));
+      return router.push("/appointments");
     }
     dispatch(addEvent(formData));
+    return router.push("/appointments");
   };
 
   dispatch(setIsClientOverviewOpen(false));
@@ -285,7 +289,7 @@ const Form = () => {
                   <span>Veterinary</span>
                   <div className='divider h-[1px] bg-gray-300 flex-grow'></div>
                 </div>
-                <div className='grid grid-cols-1 md-lg:grid-cols-2 lg-xl:grid-cols-3 gap-16'>
+                <div className='grid grid-cols-1 md-lg-900:grid-cols-2 lg-xl:grid-cols-3 gap-16'>
                   {vetList.map((data, index) => (
                     <React.Fragment key={index}>
                       <VetCards

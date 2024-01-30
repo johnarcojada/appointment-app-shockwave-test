@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { IconMessages, IconPhone, IconPinLocation } from "@/assets/icons";
 import { FaCheck } from "react-icons/fa6";
@@ -29,10 +29,16 @@ const VetCards: React.FC<VetTypes> = ({
     <div
       className={`${
         styles.vetCard
-      } rounded-lg border bg-white border-solid border-gray-300 p-20 relative pointer overflow-hidden transition-all duration-300 hover:border-primary transform hover:scale-[1.025] ${
+      } rounded-lg border bg-white border-solid border-gray-300 p-20 relative pointer overflow-hidden transition-all duration-300 hover:border-primary transform hover:scale-[1.025] outline-none focus-within:scale-[1.025] focus-within:border-primary ${
         isSelected ? styles.selected : ""
       }`}
+      tabIndex={0}
       onClick={onSelect}
+      onKeyDown={(evt) => {
+        if (evt.key === "Enter") {
+          onSelect();
+        }
+      }}
     >
       <div
         className={`${styles.checkbox} absolute w-16 h-16 border border-solid border-gray-300 rounded-full bg-white right-8 top-8 cursor-pointer transition duration-300 text-white text-xs`}

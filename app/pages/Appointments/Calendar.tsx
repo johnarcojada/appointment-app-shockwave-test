@@ -186,13 +186,9 @@ const Calendar = () => {
           eventClick={(info) => {
             const eventObj = info.event;
             const { id } = eventObj;
-            if (id === selectedClientId || !selectedClientId) {
-              dispatch(setIsClientOverviewOpen(!isClientOverviewOpen));
-            }
+            dispatch(setIsClientOverviewOpen(true));
             dispatch(setSelectedClientOverview(id));
           }}
-          // dateClick={{}}
-          // drop={{}}
         />
       </motion.div>
     </>

@@ -79,7 +79,8 @@ const config: Config = {
         "100vh-116": "calc(100vh - 7.25rem)",
       },
       screens: {
-        "md-lg": "900px",
+        "md-lg-900": "900px",
+        "md-lg-1000": "1000px",
         "lg-xl": "1180px",
       },
     },

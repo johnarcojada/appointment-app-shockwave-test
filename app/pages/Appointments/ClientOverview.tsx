@@ -13,8 +13,12 @@ import {
 } from "@/assets/icons";
 import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { removeEvent } from "@/lib/features/clientOverviewSlice";
+import {
+  removeEvent,
+  setIsClientOverviewOpen,
+} from "@/lib/features/clientOverviewSlice";
 import { useRouter } from "next/navigation";
+import { IoClose } from "react-icons/io5";
 
 const clientOverviewAnim = {
   initial: { x: 400 },
@@ -39,28 +43,38 @@ const ClientOverview = () => {
   const client = event?.client;
   const handleOnCancelClick = () => {
     dispatch(removeEvent(event.id));
+    dispatch(setIsClientOverviewOpen(false));
   };
   const handleOnReschedClick = () => {
     router.push(`appointments/form?eventId=${event.id}`);
   };
   return (
     <motion.div
-      className='client-overview-container h-full overflow-auto border-l border-l-gray-300 absolute left-full custom-scrollbar'
+      className='client-overview-container h-full overflow-y-auto  border-l border-l-gray-300 absolute left-full custom-scrollbar'
       variants={clientOverviewAnim}
       initial='initial'
       animate={isClientOverviewOpen ? "open" : "closed"}
     >
       <div className='client-overview w-[400px] h-full max-h-100vh-116 relative'>
         {/* Client Name */}
-        <div className='px-40 py-20 flex justify-between gap-24 border-b border-b-gray-300'>
-          <div className='flex gap-24 items-center'>
+        <div className='px-40 py-20 border-b border-b-gray-300 relative w-full overflow-hidden'>
+          <button
+            className='absolute top-8 right-12 h-28 w-28 rounded-full bg-black bg-opacity-5 hover:bg-opacity-10 transition duration-300 outline-primary flex justify-center items-center'
+            onClick={() => dispatch(setIsClientOverviewOpen(false))}
+          >
+            <IoClose />
+          </button>
+          <div className='flex gap-24 items-center w-full'>
             <img
               src={client?.clientInfo.image}
               alt='Client Profile'
               className='h-80 w-80 rounded-full border border-solid border-gray-300'
             />
-            <div>
-              <span className='client-name font-bold inline-block text-2xl text-gray-900'>
+            <div className='flex-grow w-full'>
+              <span
+                className='client-name font-bold inline-block text-2xl text-gray-900 overflow-hidden text-ellipsis w-full max-w-240'
+                title={client?.clientInfo.name}
+              >
                 {client?.clientInfo.name}
               </span>
               <span className='text-gray-400 text-16 block'>Client</span>
@@ -179,9 +193,7 @@ const ClientOverview = () => {
               </span>
               <span className='text-gray-400'>Breed</span>
             </span>
-            <span className='col-span-2'>
-              {client?.petDetails.breed}French Bulldog
-            </span>
+            <span className='col-span-2'>{client?.petDetails.breed}</span>
 
             <span className='flex items-center gap-8'>
               <span className='flex justify-center w-20'>
@@ -218,13 +230,13 @@ const ClientOverview = () => {
         </div>
         <div className='px-40 py-20 border-b border-b-gray-300'>
           <button
-            className='w-full bg-primary hover:bg-orange-hover py-12 px-24 text-white rounded-xl mb-20 transition duration-300'
+            className='w-full bg-primary hover:bg-orange-hover outline-orange-hover py-12 px-24 text-white rounded-xl mb-20 transition duration-300'
             onClick={handleOnReschedClick}
           >
             Reschedule Appointment
           </button>
           <button
-            className='w-full bg-white border border-solid border-gray-300 hover:border-primary hover:bg-primary py-12 px-24 text-gray-400 hover:text-white rounded-xl transition duration-300'
+            className='w-full bg-white border border-solid border-gray-300 outline-primary hover:border-primary hover:bg-primary py-12 px-24 text-gray-400 hover:text-white rounded-xl transition duration-300'
             onClick={handleOnCancelClick}
           >
             Cancel Appointment
