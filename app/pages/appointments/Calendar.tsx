@@ -8,13 +8,12 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import "./fullCalendarOverrides.css";
-// import EventBox from "./EventBox";
 import { EventContentArg } from "@fullcalendar/core/index.js";
 import { FaRegUserCircle, FaRegCalendarAlt } from "react-icons/fa";
 import { PiChatsCircleBold } from "react-icons/pi";
 import { LuSyringe } from "react-icons/lu";
 import {
-  EventSourceType,
+  EventType,
   setIsClientOverviewOpen,
   setSelectedClientOverview,
 } from "@/lib/features/clientOverviewSlice";
@@ -34,9 +33,8 @@ const calendarAnim = {
   },
 };
 const EventBox = (eventInfo: EventContentArg) => {
-  const event: EventSourceType = eventInfo.event
-    .extendedProps as EventSourceType;
-  const client = event.client ? event.client : "";
+  const event: EventType = eventInfo.event.extendedProps as EventType;
+  const client = event.client;
   return (
     <>
       {event && event.client ? (
@@ -90,14 +88,14 @@ const Calendar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const useSelector = useAppSelector;
   const router = useRouter();
-  const { isClientOverviewOpen, eventSources, selectedClientOverview } =
-    useSelector((state) => state.clientOverviewReducer);
-  const selectedClientId = selectedClientOverview.events?.[0].id;
+  const { isClientOverviewOpen, eventSources } = useSelector(
+    (state) => state.clientOverviewReducer
+  );
   const calendarRef = useRef<FullCalendarRef | null>(null);
   // Generate additional custom elements
   useEffect(() => {
     if (calendarRef.current) {
-      const calendarApi = calendarRef.current.getApi();
+      const calendarApi: any = calendarRef.current.getApi();
       const calendarElement = calendarApi.el;
       if (
         calendarElement &&
